@@ -1,0 +1,30 @@
+# Задача про спиральную матрицу (квадратную)
+n = int(input("Введите натуральное число N:"))
+m = [[0]*n for i in range(n)]
+i = 1  # шаг
+x = 0
+y = -1
+dx = 0  # строки
+dy = 1  # столбцы
+
+while i <= n ** 2:
+    if 0 <= x + dx < n and 0 <= y+dy < n and m[x+dx][y+dy] == 0:
+        x += dx
+        y += dy
+        m[x][y] = i
+        i += 1
+    else:
+        if dy == 1:
+            dy = 0
+            dx = 1
+        elif dx == 1:
+            dx = 0
+            dy = -1
+        elif dy == -1:
+            dy = 0
+            dx = -1
+        elif dx == -1:
+            dx = 0
+            dy = 1
+for i in m:
+    print(i)
